@@ -1,13 +1,19 @@
 let playerImage, treasureImage;
+let playerDownImage, playerUpImage, playerLeftImage, playerRightImage
 
 function preload(){
-  playerImage = loadImage('../assets/character-down.png')
+  playerDownImage = loadImage('../assets/character-down.png')
+  playerLeftImage = loadImage("../assets/character-left.png")
+  playerRightImage = loadImage("../assets/character-right.png")
+  playerUpImage = loadImage("../assets/character-up.png")
+  
   treasureImage = loadImage('../assets/treasure.png')
+
+  playerImage = playerDownImage
 }
 
 class Game {
   drawGrid() {
-    // https://p5js.org/reference/#/p5/line
     for(let i = 0; i <= 1000; i+= 100){
       line(0, i, width, i)
       line(i, 0, i, height)
@@ -54,14 +60,18 @@ class Treasure{
 function keyPressed(){
   if(keyCode === LEFT_ARROW){
     player.moveLeft()
+    playerImage = playerLeftImage
   }
   if(keyCode === RIGHT_ARROW){
     player.moveRight()
+    playerImage = playerRightImage
   }
   if(keyCode === UP_ARROW){
     player.moveUp()
+    playerImage = playerUpImage
   }
   if(keyCode === DOWN_ARROW){
     player.moveDown()
+    playerImage = playerDownImage
   }
 }
