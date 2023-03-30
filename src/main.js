@@ -11,22 +11,23 @@ function setup() {
 
 function draw() {
   game.drawGrid();
+  game.treasure.drawTreasure()
 }
 
 function keyPressed() {
   if (keyCode === 37) { // Moves to the left
-    if (game.player.col > 100) game.player.moveLeft()
+    if (game.player.col > 0) game.player.moveLeft()
   }
 
   if (keyCode === 39) { // Moves to the right
-    if (game.player.col < 900) game.player.moveRight()
+    if (game.player.col < 9) game.player.moveRight()
   }
 
   if (keyCode === 38) { // Moves up
-    if (game.player.row > 100) game.player.moveUp()
+    if (game.player.row > 0) game.player.moveUp()
   }
 
   if (keyCode === 40) { // Moves down
-    if (game.player.row < 900) game.player.moveDown()
+    if (game.player.row < 9) game.player.moveDown()
   }
 }
