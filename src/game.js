@@ -1,6 +1,7 @@
 let playerImage, treasureImage;
 let playerDownImage, playerUpImage, playerLeftImage, playerRightImage
 const scoreText = document.getElementById("score")
+const scoreText2 = document.getElementById("score2")
 
 function preload(){
   playerDownImage = loadImage('../assets/character-down.png')
@@ -40,7 +41,6 @@ class Player{
     this.col++
   }
   draw(){
-    clear()
     image(playerImage, this.col * 100, this.row * 100, 100, 100)
   }
 }
@@ -88,6 +88,38 @@ function keyPressed(){
   if(player.col === treasure.col / 100 && player.row === treasure.row / 100){
     player.score++
     updateScore()
+    treasure.setRandomPosition()
+  }
+
+  if(keyCode === 65){
+    playerImage = playerLeftImage
+    if(player2.col >= 1){
+      player2.moveLeft()
+      console.log("player2 left")
+    }
+  }
+  if(keyCode === 68){
+    playerImage = playerRightImage
+    if(player2.col <= 8){
+      player2.moveRight()
+    }
+  }
+  if(keyCode === 87){
+    playerImage = playerUpImage
+    if(player2.row >= 1){
+      player2.moveUp()
+    }
+  }
+  if(keyCode === 83){
+    playerImage = playerDownImage
+    if(player2.row <= 8){
+      player2.moveDown()
+
+    }
+  }
+  if(player2.col === treasure.col / 100 && player2.row === treasure.row / 100){
+    player2.score++
+    scoreText2.innerText = player2.score
     treasure.setRandomPosition()
   }
 }
