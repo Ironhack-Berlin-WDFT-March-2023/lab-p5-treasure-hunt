@@ -6,8 +6,13 @@ function setup() {
 }
 
 function draw() {
+  clear();
   game.drawGrid();
   game.draw();
+}
+
+function drawTreasure() {
+  game.drawTreasure();
 }
 
 function preload() {

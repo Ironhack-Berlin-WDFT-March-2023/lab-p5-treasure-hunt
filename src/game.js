@@ -51,12 +51,58 @@ class Game {
   }
   constructor() {
     this.player = new Player();
+    this.treasure = new Treasure();
   }
   preload() {
     this.player.image = loadImage("../assets/character-down.png");
+    this.treasure.image = loadImage("../assets/treasure.png");
   }
   draw() {
     this.player.draw();
+  }
+  drawTreasure() {
+    this.treasure.draw();
+  }
+}
+
+class Player {
+  constructor() {
+    this.col = 0;
+    this.row = 0;
+    this.width = 100;
+    this.height = 100;
+    this.image;
+  }
+  moveUp() {
+    this.row -= 5;
+  }
+  moveDown() {
+    this.row += 5;
+  }
+  moveLeft() {
+    this.col -= 5;
+  }
+  moveRight() {
+    this.col += 5;
+  }
+  draw() {
+    image(this.image, this.col, this.row, this.width, this.height);
+
+    if (keyIsDown(LEFT_ARROW)) {
+			if (this.col > 0) this.moveLeft();
+		}
+
+		if (keyIsDown(RIGHT_ARROW)) {
+			if (this.col < width - this.width) this.moveRight();
+		}
+
+		if (keyIsDown(UP_ARROW)) {
+			if (this.row > 0) this.moveUp();
+		} 
+
+		if (keyIsDown(DOWN_ARROW)) {
+			if (this.row < height - this.height) this.moveDown();
+    }
   }
   keyPressed() {
     if (keyCode === 39) {
@@ -71,10 +117,11 @@ class Game {
     if (keyCode === 40) {
       game.player.moveDown();
     }
+    
   }
 }
 
-class Player {
+class Treasure {
   constructor() {
     this.col = 0;
     this.row = 0;
@@ -82,37 +129,12 @@ class Player {
     this.height = 100;
     this.image;
   }
-  moveUp() {
-    this.col -= 1;
+  setRandomPosition() {
+    this.col = Math.floor(Math.random() * col);
+    this.row = Math.floor(Math.random() * row);
   }
-  moveDown() {
-    this.col += 1;
-  }
-  moveLeft() {
-    this.row -= 1;
-  }
-  moveRight() {
-    this.row += 1;
-  }
-  draw() {
+  drawTreasure() {
     image(this.image, this.col, this.row, this.width, this.height);
-
-    if (keyIsDown(LEFT_ARROW)) {
-			if (this.x > 0) this.moveLeft()
-		}
-
-		if (keyIsDown(RIGHT_ARROW)) {
-			if (this.x < width - this.width) this.moveRight()
-		}
-
-		if (keyIsDown(UP_ARROW)) {
-			if (this.y > 0) this.moveUp()
-		}
-
-		if (keyIsDown(DOWN_ARROW)) {
-			if (this.y < height - this.height) this.moveDown()
-    
-    }
   }
 }
  
