@@ -55,6 +55,9 @@ function keyPressed() {
   } else if (keyCode === DOWN_ARROW) {
     player.moveDown();
   }
+  if (player.col === treasure.col && player.row === treasure.row) {
+    treasure.found();
+  }
 }
 
 class Player {
@@ -99,6 +102,9 @@ class Treasure {
 
   draw() {
     image(treasureImage, this.col * 80, this.row * 80, 80, 80);
+  }
+  found() {
+    this.setRandomPosition();
   }
 }
 
