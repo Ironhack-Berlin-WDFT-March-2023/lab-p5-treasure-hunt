@@ -1,5 +1,6 @@
 let playerImage, treasureImage;
 let playerDownImage, playerUpImage, playerLeftImage, playerRightImage
+const scoreText = document.getElementById("score")
 
 function preload(){
   playerDownImage = loadImage('../assets/character-down.png')
@@ -24,6 +25,7 @@ class Player{
   constructor(col, row){
     this.col = col
     this.row = row
+    this.score = 0
   }
   moveUp(){
     this.row--
@@ -83,4 +85,12 @@ function keyPressed(){
 
     }
   }
+  if(player.col === treasure.col / 100 && player.row === treasure.row / 100){
+    player.score++
+    updateScore()
+    treasure.setRandomPosition()
+  }
+}
+function updateScore(score){
+  scoreText.innerText = player.score
 }
