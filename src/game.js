@@ -8,6 +8,7 @@ class Game {
   }
 
   drawGrid() {
+    clear()
     // Iteration 1
     // Draw the grid
     // https://p5js.org/reference/#/p5/line
@@ -55,23 +56,22 @@ class Player {
   }
 
   moveRight() {
-    this.col += 1
+    this.col += 100
   }
 
   moveLeft() {
-    this.col -= 1
+    this.col -= 100
   }
 
   moveUp() {
-    this.row -= 1
+    this.row -= 100
   }
 
   moveDown() {
-    this.row += 1
+    this.row += 100
   }
 
   draw() {
     image(this.image, this.col, this.row, this.width, this.height)
   }
-}
-
+  }
