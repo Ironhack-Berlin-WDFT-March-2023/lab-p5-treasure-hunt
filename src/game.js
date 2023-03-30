@@ -1,4 +1,12 @@
 class Game {
+  constructor() {
+    this.player = new Player()
+  }
+
+  preload() {
+    this.player.image = loadImage("../assets/character-down.png")
+  }
+
   drawGrid() {
     // Iteration 1
     // Draw the grid
@@ -32,6 +40,38 @@ class Game {
     line(0, (HEIGHT / 10 * 8), WIDTH, (HEIGHT / 10 * 8))
     line(0, (HEIGHT / 10 * 9), WIDTH, (HEIGHT / 10 * 9))
 
-    // 
+    //
+    this.player.draw() 
   }
 }
+
+class Player {
+  constructor() {
+    this.col = 1
+    this.row = 1
+    this.width = 100
+    this.height = 100
+    this.image
+  }
+
+  moveRight() {
+    this.col += 1
+  }
+
+  moveLeft() {
+    this.col -= 1
+  }
+
+  moveUp() {
+    this.row -= 1
+  }
+
+  moveDown() {
+    this.row += 1
+  }
+
+  draw() {
+    image(this.image, this.col, this.row, this.width, this.height)
+  }
+}
+
