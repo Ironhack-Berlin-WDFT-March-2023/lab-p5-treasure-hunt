@@ -59,19 +59,28 @@ class Treasure{
 }
 function keyPressed(){
   if(keyCode === LEFT_ARROW){
-    player.moveLeft()
     playerImage = playerLeftImage
+    if(player.col >= 1){
+      player.moveLeft()
+    }
   }
   if(keyCode === RIGHT_ARROW){
-    player.moveRight()
     playerImage = playerRightImage
+    if(player.col <= 8){
+      player.moveRight()
+    }
   }
   if(keyCode === UP_ARROW){
-    player.moveUp()
     playerImage = playerUpImage
+    if(player.row >= 1){
+      player.moveUp()
+    }
   }
   if(keyCode === DOWN_ARROW){
-    player.moveDown()
     playerImage = playerDownImage
+    if(player.row <= 8){
+      player.moveDown()
+
+    }
   }
 }
