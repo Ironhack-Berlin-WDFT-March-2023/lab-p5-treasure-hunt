@@ -6,12 +6,21 @@ class Game {
 
   preload() {
     this.player.image = loadImage("../assets/character-down.png")
+    this.player.imagedown = loadImage("../assets/character-down.png")
+    this.player.imageup = loadImage("../assets/character-up.png")
+    this.player.imageleft = loadImage("../assets/character-left.png") 
+    this.player.imageright = loadImage("../assets/character-right.png") 
     this.treasure.image = loadImage("../assets/treasure.png")
-    this.treasure.setRandomPosition()
+  }
+
+  draw() {
+    clear()
+    this.drawGrid() 
+    this.player.draw() 
+    this.treasure.drawTreasure()
   }
 
   drawGrid() {
-    clear()
     // Iteration 1
     // Draw the grid
     // https://p5js.org/reference/#/p5/line
@@ -43,9 +52,6 @@ class Game {
     line(0, (HEIGHT / 10 * 7), WIDTH, (HEIGHT / 10 * 7))
     line(0, (HEIGHT / 10 * 8), WIDTH, (HEIGHT / 10 * 8))
     line(0, (HEIGHT / 10 * 9), WIDTH, (HEIGHT / 10 * 9))
-
-    //
-    this.player.draw() 
   }
 }
 
@@ -60,18 +66,26 @@ class Player {
 
   moveRight() {
     this.col += 1
+    game.treasure.collision()
+    this.image = this.imageright
   }
 
   moveLeft() {
     this.col -= 1
+    game.treasure.collision()
+    this.image = this.imageleft
   }
 
   moveUp() {
     this.row -= 1
+    game.treasure.collision()
+    this.image = this.imageup
   }
 
   moveDown() {
     this.row += 1
+    game.treasure.collision()
+    this.image = this.imagedown
   }
 
   draw() {
@@ -85,15 +99,21 @@ class Treasure {
     this.row = 1
     this.width = 100
     this.height = 100
+    this.setRandomPosition()
   }
 
   setRandomPosition() {
     this.col = Math.floor(Math.random() * (10 - 1) + 1);
     this.row = Math.floor(Math.random() * (10 - 1) + 1);
-    console.log(this.col)
   } 
 
   drawTreasure() {
     image(this.image, this.col*100, this.row*100, this.width, this.height)
+  }
+
+  collision() {
+    if (dist(this.col, this.row, game.player.col, game.player.row) < 1) {
+      this.setRandomPosition()
+    }
   }
 }

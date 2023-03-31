@@ -10,8 +10,7 @@ function setup() {
 }
 
 function draw() {
-  game.drawGrid();
-  game.treasure.drawTreasure()
+  game.draw();
 }
 
 function keyPressed() {
