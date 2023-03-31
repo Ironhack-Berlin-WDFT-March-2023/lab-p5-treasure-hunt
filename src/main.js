@@ -5,6 +5,7 @@ function setup() {
   let canvas = createCanvas(WIDTH, HEIGHT);
   canvas.parent("canvas");
   treasure.setRandomPosition()
+  console.log("set up")
 }
 function draw() {
   clear()
@@ -13,5 +14,8 @@ function draw() {
   game.draw()
 }
 window.addEventListener("keydown", (e) =>{
-  e.preventDefault()
+  console.log(e.key)
+  if(e.key === "ArrowDown" || e.key === "ArrowUp" ||e.key === "ArrowLeft" || e.key ==="ArrowRight"){
+    e.preventDefault()
+  }
 })

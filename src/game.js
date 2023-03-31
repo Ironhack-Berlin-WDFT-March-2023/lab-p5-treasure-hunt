@@ -3,8 +3,11 @@ let playerDownImage, playerUpImage, playerLeftImage, playerRightImage
 const scoreText = document.getElementById("score")
 const scoreText2 = document.getElementById("score2")
 
+console.log("game js")
+
 function preload(){
   game.preload()
+  console.log("game preload")
 }
 
 class Game {
@@ -25,6 +28,7 @@ class Game {
   drawGrid() {
     for(let i = 0; i <= 1000; i+= 100){
       line(0, i, width, i)
+      strokeWeight(3)
       line(i, 0, i, height)
     }
   }
