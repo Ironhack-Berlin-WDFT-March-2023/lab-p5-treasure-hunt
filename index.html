@@ -10,6 +10,17 @@
   <body>
     <h1>Splatoon</h1>
     <div id="canvas"></div>
+    <div style="display: flex; gap: 200px;">
+      <h2 style="font-size: 42pt;">Player A: <span id="score2">0</span></h2>
+      <h2 style="font-size: 42pt;">Player B: <span id="score">0</span></h2>
+    </div>
+    <div style="position: absolute; top: 20px; right: 20px; font-size: 22pt;">
+      <h3>Controls:</h3>
+      <p>Hint: Zoom Out - to see the better</p>
+      <p> <strong>Player A:</strong>W, A, S, D</p>
+      <p> <strong>Player B:</strong><br>Arrow Up <br> Arrow Left <br> Arrow Down <br> Arrow Right</p>
+    </div>
+   
     <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
     <script src="src/constants.js"></script>
     <script src="src/game.js"></script>
