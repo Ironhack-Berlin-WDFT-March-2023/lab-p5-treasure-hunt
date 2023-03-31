@@ -7,4 +7,7 @@ function setup() {
 
 function draw() {
   game.drawGrid();
+  this.player.draw()
 }
+
+
