@@ -14,15 +14,8 @@ class Game {
   }
 
   drawGrid() {
-    // Draw vertical lines
-    for (let x = 0; x <= WIDTH; x += SQUARE_SIDE) {
-      line(x, 0, x, HEIGHT);
-    }
-    
-    // Draw horizontal lines
-    for (let y = 0; y <= HEIGHT; y += SQUARE_SIDE) {
-      line(0, y, WIDTH, y);
-    }
+    for (let x = 0; x <= WIDTH; x += SQUARE_SIDE) line(x, 0, x, HEIGHT); // vertical lines
+    for (let y = 0; y <= HEIGHT; y += SQUARE_SIDE) line(0, y, WIDTH, y); // horizontal lines
   }
 
   drawPlayerOnGrid() {
@@ -33,14 +26,8 @@ class Game {
   drawTreasureOnGrid() {
     this.treasure.placeTreasureOnGrid();
   }
-
-  treasureIsCatched() {
-    if ( this.player.col === this.treasure.col && this.player.row === this.treasure.row ) {
-      this.treasure.setRandomPosition();
-      this.player.score++;
-    }
-  }
 }
+
 
 class Player {
   constructor() {
@@ -86,11 +73,14 @@ class Player {
   }
 }
 
+
 class Treasure {
   constructor() {
     this.row;
     this.col;
     this.imgTreasure;
+
+    this.setRandomPosition(); // will be execute once on construction
   }
 
   setRandomPosition() {
@@ -100,5 +90,12 @@ class Treasure {
 
   placeTreasureOnGrid() {
     image( this.imgTreasure, this.row, this.col, SQUARE_SIDE, SQUARE_SIDE );
+  }
+
+  isCatched() {
+    if ( game.player.col === this.col && game.player.row === this.row ) {
+      this.setRandomPosition();
+      game.player.score++;
+    }
   }
 }

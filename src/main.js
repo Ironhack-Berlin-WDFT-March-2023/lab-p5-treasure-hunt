@@ -2,7 +2,6 @@ const game = new Game();
 
 function preload() {
   game.preloadImages()
-  game.treasure.setRandomPosition();
 }
 
 function setup() {
@@ -14,7 +13,7 @@ function draw() {
   game.drawPlayerOnGrid();
   game.drawTreasureOnGrid();
   game.drawGrid();
-  game.treasureIsCatched();
+  game.treasure.isCatched();
 
   document.querySelector('h2 span').innerHTML = game.player.score;
 }
