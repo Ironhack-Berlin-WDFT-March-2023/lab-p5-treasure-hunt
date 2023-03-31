@@ -38,15 +38,11 @@ class Player {
 
   moveUp() {
     if (this.row >= 100) {
-
-    
-      this.row -= 100; }
-    
+       this.row -= 100; }
   }
 
   moveDown() {
-    if (this.row <= 800){ //twice the width
-
+    if (this.row <= 800){      //twice the width
       this.row +=100;
     }
   }
@@ -60,9 +56,7 @@ class Player {
 
   moveRight() {
     if (this.col <= 800){
-
-  
-      this.col += 100;
+    this.col += 100;
     } }
   
    draw() {
