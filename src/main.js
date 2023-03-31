@@ -34,17 +34,21 @@ function keyPressed() {
   if (keyCode === LEFT_ARROW) {
     console.log("left");
     player.moveLeft();
+    // treasure.collision();
   }
   if (keyCode === RIGHT_ARROW) {
     console.log("right");
     player.moveRight();
+    // treasure.collision();
   }
   if (keyCode === UP_ARROW) {
     console.log("left");
     player.moveUp();
+    // treasure.collision();
   }
   if (keyCode === DOWN_ARROW) {
     console.log("right");
     player.moveDown();
+    // treasure.collision();
   }
 }

@@ -1,10 +1,13 @@
 class Game {
-  draw() {}
-
   drawGrid() {
     // Iteration 1
     // Draw the grid
     // https://p5js.org/reference/#/p5/line
+
+    /*  for (let i = 0; i<= 10 ; i++){
+      line (0, Height/10*i, )
+      line()
+    } */
 
     line(0, 0, 1000, 0);
     line(0, 100, 1000, 100);
@@ -40,15 +43,19 @@ class Player {
   }
   moveUp() {
     this.row -= 100;
+    treasure.collision();
   }
   moveDown() {
     this.row += 100;
+    treasure.collision();
   }
   moveRight() {
     this.col += 100;
+    treasure.collision();
   }
   moveLeft() {
     this.col -= 100;
+    treasure.collision();
   }
 
   draw() {
@@ -74,6 +81,7 @@ class Treasure {
   constructor(col = 0, row = 0) {
     this.col = col;
     this.row = row;
+
     this.setRandomPosition();
   }
 
@@ -83,7 +91,17 @@ class Treasure {
   }
 
   draw() {
-    console.log("Treasure drawed");
+    console.log("Treasure drawed!!", { col: this.col, row: this.row, keyCode });
     image(treasureImg, this.col, this.row, 100, 100);
+  }
+
+  collision() {
+    console.log("Collision!!!");
+    if (player.col === this.col && player.row === this.row) {
+      this.setRandomPosition();
+    }
+    /* if (dist(this.col, this.row, player.col, player.row) < 100) {
+      this.setRandomPosition();
+    } */
   }
 }
