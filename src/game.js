@@ -27,14 +27,7 @@ class Game {
     }
 
   }
-
-
- 
 }
-
-
-
-
 
 class Player {
   constructor() {
