@@ -104,21 +104,6 @@ class Player {
 			if (this.row < height - this.height) this.moveDown();
     }
   }
-  keyPressed() {
-    if (keyCode === 39) {
-      game.player.moveRight();
-    }
-    if (keyCode === 37) {
-      game.player.moveLeft();
-    }
-    if (keyCode === 38) {
-      game.player.moveUp();
-    }
-    if (keyCode === 40) {
-      game.player.moveDown();
-    }
-    
-  }
 }
 
 class Treasure {
@@ -130,8 +115,8 @@ class Treasure {
     this.image;
   }
   setRandomPosition() {
-    this.col = Math.floor(Math.random() * col);
-    this.row = Math.floor(Math.random() * row);
+    this.col = Math.floor(Math.random() * 10) * 100;
+    this.row = Math.floor(Math.random() * 10) * 100;
   }
   drawTreasure() {
     image(this.image, this.col, this.row, this.width, this.height);
